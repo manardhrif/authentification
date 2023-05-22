@@ -4,6 +4,7 @@ import { environment}from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Patient } from '../model/patient';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
@@ -42,10 +43,16 @@ export class AuthenticationService {
     localStorage.setItem('user' ,JSON.stringify(user));
   }
 
+  public addPatientToLocalCache(user: Patient| null): void {
+    localStorage.setItem('patient' ,JSON.stringify(user));
+  } 
+
   public getUserFromLocalCache(): User {
     return JSON.parse(localStorage.getItem('user')||'');
   }
-
+  public getPatientFromLocalCache(): Patient {
+    return JSON.parse(localStorage.getItem('patient')||'');
+  }
   public loadToken(): void{
     this.token = localStorage.getItem('token');
   }

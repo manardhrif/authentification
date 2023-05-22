@@ -37,7 +37,8 @@ export class UserComponent implements OnInit , OnDestroy {
 
 
 
-  constructor(  private router : Router , private userService : UserService  , private authenticationService :AuthenticationService ,
+  constructor(  private router : Router , private userService : UserService  ,
+     private authenticationService :AuthenticationService ,
               private notificationService : NotificationService ){}
 
   ngOnInit(): void {
@@ -209,6 +210,24 @@ export class UserComponent implements OnInit , OnDestroy {
     this.sendNotification(NotificationType.SUCCESS, `You've been logged out successfully `)
    }
 
+   public onDeleteUser(username: string): void {
+    this.subscriptions.push(
+      this.userService.deleteUser(username).subscribe(
+        (response: CustomHttpRespone) => {
+          this.sendNotification(NotificationType.SUCCESS, response.message);
+          this.getUsers(false);
+        },
+        (errorResponse: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          this.profileImage = null;
+        }
+      )
+    );
+  }
+
+
+
+  ///seeting 
    public onResetPassword(emailForm: NgForm):void {
     this.refreshing = true;
     const emailAddress = emailForm.value['reset-password-email'];
@@ -229,20 +248,7 @@ export class UserComponent implements OnInit , OnDestroy {
 
 
 
-  public onDeleteUser(username: string): void {
-    this.subscriptions.push(
-      this.userService.deleteUser(username).subscribe(
-        (response: CustomHttpRespone) => {
-          this.sendNotification(NotificationType.SUCCESS, response.message);
-          this.getUsers(false);
-        },
-        (errorResponse: HttpErrorResponse) => {
-          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-          this.profileImage = null;
-        }
-      )
-    );
-  }
+  
 
  public get isAdmin(): boolean {
   return this.getUserRole() === Role.ADMIN ||  this.getUserRole() === Role.SUPER_ADMIN;  ;
