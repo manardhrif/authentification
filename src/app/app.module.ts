@@ -20,6 +20,11 @@ import { MainComponent } from './main/main.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfilComponent } from './profil/profil.component';
+import { TopWidgetsComponent } from './top-widgets/top-widgets.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PatientByAgeComponent } from './patient-by-age/patient-by-age.component';
+import { PatientByGenreComponent } from './patient-by-genre/patient-by-genre.component';
+import { LastFewPatientComponent } from './last-few-patient/last-few-patient.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,12 @@ import { ProfilComponent } from './profil/profil.component';
     PatientComponent,
     SettingsComponent,
     LogoutComponent,
-    ProfilComponent
+    ProfilComponent,
+    TopWidgetsComponent,
+    DashboardComponent,
+    PatientByAgeComponent,
+    PatientByGenreComponent,
+    LastFewPatientComponent
   ],
   imports: [
     BrowserModule,

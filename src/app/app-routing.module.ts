@@ -11,6 +11,11 @@ import { MainComponent } from './main/main.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfilComponent } from './profil/profil.component';
+import { TopWidgetsComponent } from './top-widgets/top-widgets.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PatientByAgeComponent } from './patient-by-age/patient-by-age.component';
+import { PatientByGenreComponent } from './patient-by-genre/patient-by-genre.component';
+import { LastFewPatientComponent } from './last-few-patient/last-few-patient.component';
 
 
 const routes: Routes = [
@@ -24,7 +29,12 @@ const routes: Routes = [
   {path: 'patient', component: PatientComponent },
   {path: 'settings', component: SettingsComponent},
   {path: 'logout', component:LogoutComponent},
-  {path: 'profil', component:ProfilComponent}
+  {path: 'profil', component:ProfilComponent},
+  {path: 'topwidgetscomponenet',component :TopWidgetsComponent},
+  {path:'dashboard', component:DashboardComponent},
+  {path:'patientbyage', component:PatientByAgeComponent},
+  {path:'patientbygenre', component:PatientByGenreComponent},
+  {path:'fewpatient', component:LastFewPatientComponent}
 ];
 
 @NgModule({
